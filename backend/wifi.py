@@ -83,7 +83,7 @@ def turn_off_wifi(header):
         print_error(response_5g)
     return response_2g, response_5g
 
-def get_state(header, band='5g') -> Boolean:
+def get_state(header, band='5g') -> bool:
     if band == '5g':
         response_5g = session.get(BAND5G_STATE_URL, headers=header)
         if response_5g.ok:
