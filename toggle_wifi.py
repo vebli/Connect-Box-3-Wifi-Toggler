@@ -131,3 +131,32 @@ def logout(token):
     else: 
         print("Logout Failed")
     return response
+
+# def get_status(password):
+#     token = login(password)
+#     header = get_header(token)
+#     state_5g = get_state(header, '5g')
+#     state_2g = get_state(header, '2g')
+#     logout(token)
+#     if state_2g or state_5g:
+#         return True
+#     else:
+#         return False
+
+
+
+PASSWORD_FILE = "password"
+PASSWORD = ""
+with open(PASSWORD_FILE, "r") as f:
+    PASSWORD = f.read().strip()
+if PASSWORD == "":
+    raise Exception("No password set")
+
+token = login(PASSWORD)
+header = get_header(token)
+response_2g, response_5g  = toggle_wifi(header)
+logout_response = logout(token)
+# if response_2g.ok and response_5g.ok:
+#     print("Turned on Wifi")
+# else:
+#     print("Turned off Wifi")

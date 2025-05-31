@@ -1,0 +1,16 @@
+[Unit]
+Description=WiFi Toggle Button Listener
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /path/to/main.py 
+WorkingDirectory=/Path/to/some/writable/directory #gpio library requires writable directory
+Restart=always
+RestartSec=10
+Group=gpio
+User=YOUR_USERNAME #Must be in gpio group
+
+
+[Install]
+WantedBy=multi-user.target
+
